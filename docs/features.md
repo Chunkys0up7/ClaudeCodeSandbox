@@ -4,6 +4,14 @@
 
 The AI App Store is a comprehensive collection of tools and offerings sourced from across the firm, as well as bespoke solutions tailored to specific needs. This diverse array of resources ensures that users have access to the latest innovations and technologies, enabling them to stay ahead of industry trends and leverage cutting-edge solutions for their business challenges.
 
+## Comprehensive App Management
+
+The "Manage AI App" feature provides users with a transparent view of the governance and procedural steps required to transition an AI App from experimental to production. This includes compliance checks, validation processes, and approval workflows. The integration with automation tools streamlines the deployment process, ensuring efficient and accurate app management.
+
+## Flexible Build Environment
+
+The platform's build environment offers a range of models, configurations, and predefined building blocks to facilitate app development. Users can select from various language models, configure settings, and utilize tools like email sending and database querying. The real-time testing capability allows for immediate feedback and iterative improvements, while the notebook tab supports advanced coding and customization.
+
 ## Core Features
 
 ### 1. Centralized Application Catalog
@@ -59,3 +67,5 @@ The AI App Store is a comprehensive collection of tools and offerings sourced fr
 - **Risk Management**: Comprehensive oversight of AI usage and compliance
 - **Agility**: Faster response to market changes and opportunities
 - **Competitive Advantage**: Leverage cutting-edge AI capabilities ahead of competitors
+
+[See detailed feature documentation](./features-detailed.md)
