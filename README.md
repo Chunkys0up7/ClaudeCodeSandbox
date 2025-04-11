@@ -30,6 +30,10 @@ The "Utility Analysis and Monitoring" feature provides comprehensive insights in
 
 The integration of Workspaces within the AI App Store allows individuals or specific job families to create and manage collaborative environments. These Workspaces support memory functionality to retain context and history, enable app integration from the App Store, and provide both local and remote access capabilities. Users can direct the Workspace through various utilities and tools, with action logging and checkpoints to ensure reproducibility.
 
+### Communication and Developer Tools
+
+Workspaces support general chat with access to various models, modalities, and apps, along with LLM-supported developer tools for code generation, understanding codebases, and Git commands. Voice command support through TTS/STT and browser automation capabilities enhance user interaction and efficiency for applications like Encompass.
+
 ## Documentation
 
 - [Architecture Overview](./docs/architecture.md)
@@ -37,6 +41,7 @@ The integration of Workspaces within the AI App Store allows individuals or spec
 - [Features and Benefits](./docs/features.md)
 - [Detailed Features](./docs/features-detailed.md)
 - [Workspaces](./docs/workspaces.md)
+- [Communication and Developer Tools](./docs/communication.md)
 
 ## Project Structure
 
@@ -49,6 +54,12 @@ ClaudeCodeSandbox/
 │   │   ├── deployment/    # CI/CD pipeline components
 │   │   ├── analysis/      # Analysis and monitoring
 │   │   ├── workspaces/    # Workspace functionality
+│   │   │   ├── app_integration.py  # App integration
+│   │   │   ├── workspace_manager.py  # Workspace management
+│   │   │   ├── memory_manager.py  # Memory management
+│   │   │   ├── chat_interface.py  # Chat and communication
+│   │   │   ├── developer_tools.py  # Developer tools
+│   │   │   └── automation.py  # Automation capabilities
 │   │   └── workflows/     # Workflow engine
 │   ├── java/           # Java components
 │   └── mcp/            # MCP components
