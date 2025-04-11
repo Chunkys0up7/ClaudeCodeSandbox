@@ -34,6 +34,22 @@ The integration of Workspaces within the AI App Store allows individuals or spec
 
 Workspaces support general chat with access to various models, modalities, and apps, along with LLM-supported developer tools for code generation, understanding codebases, and Git commands. Voice command support through TTS/STT and browser automation capabilities enhance user interaction and efficiency for applications like Encompass.
 
+### Collaboration Tools
+
+The platform provides robust collaboration capabilities within workspaces, enabling team members to work together effectively. Features include task management with assignment and tracking, shared notes and documents with collaborative editing, event scheduling with coordination tools, and polls/voting mechanisms for team decision-making.
+
+### Security and Privacy Controls
+
+Comprehensive security and privacy controls protect sensitive data and enforce proper access management. The platform implements permission levels for different resource types, access policies with pattern-matching rules, data protection with encryption and PII detection/masking, and detailed audit logging of security-related events.
+
+### Performance Analytics
+
+Analytics and reporting tools are provided to monitor workspace performance and optimize workflows, enabling users to make data-driven decisions. Features include metric tracking for key performance indicators, real-time monitoring with customizable alerts, workflow analysis to identify bottlenecks, automated performance reports, resource optimization recommendations, and comparative analysis of different workflows.
+
+### Client Server Relationship
+
+The platform facilitates robust connections between workspace clients and backend services or external APIs. It provides comprehensive service management capabilities, flexible API integration with multiple endpoint types, automated data synchronization between external services and local storage, connection monitoring for reliability, secure credential management, and configurable data transformation pipelines.
+
 ## Documentation
 
 - [Architecture Overview](./docs/architecture.md)
@@ -59,7 +75,11 @@ ClaudeCodeSandbox/
 │   │   │   ├── memory_manager.py  # Memory management
 │   │   │   ├── chat_interface.py  # Chat and communication
 │   │   │   ├── developer_tools.py  # Developer tools
-│   │   │   └── automation.py  # Automation capabilities
+│   │   │   ├── automation.py  # Automation capabilities
+│   │   │   ├── collaboration_tools.py  # Collaboration features
+│   │   │   ├── security.py  # Security and privacy controls
+│   │   │   ├── performance_analytics.py  # Performance monitoring and optimization
+│   │   │   └── client_server_relationship.py  # External API integration and data sync
 │   │   └── workflows/     # Workflow engine
 │   ├── java/           # Java components
 │   └── mcp/            # MCP components
