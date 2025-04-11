@@ -1,0 +1,37 @@
+# MCP Configuration for Home Lending Practitioner AI App Store
+
+name: home-lending-ai-app-store
+version: 0.1.0
+
+components:
+  - name: app-registry
+    type: service
+    language: python
+    path: ../python/app.py
+    dependencies:
+      - name: database
+        type: postgres
+  
+  - name: app-store-backend
+    type: service
+    language: java
+    path: ../java/AppStore.java
+    dependencies:
+      - name: app-registry
+        type: service
+
+workflows:
+  - name: app-registration
+    steps:
+      - component: app-store-backend
+        action: register_app
+      - component: app-registry
+        action: register_app
+
+permissions:
+  - role: admin
+    actions: [read, write, execute, delete]
+  - role: developer
+    actions: [read, write, execute]
+  - role: user
+    actions: [read, execute]
