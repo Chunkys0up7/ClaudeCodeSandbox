@@ -10,33 +10,53 @@ The Home Lending Practitioner AI App Store is an innovative platform designed to
 
 The AI App Store is a comprehensive collection of tools and offerings sourced from across the firm, as well as bespoke solutions tailored to specific needs. This diverse array of resources ensures that users have access to the latest innovations and technologies, enabling them to stay ahead of industry trends and leverage cutting-edge solutions for their business challenges.
 
-Additional features include:
-- Centralized Application Catalog
-- Workflow Automation
-- Compliance and Governance
-- Development Tools
+### Comprehensive App Management
 
-[See full features documentation](./docs/features.md)
+The "Manage AI App" feature provides users with a transparent view of the governance and procedural steps required to transition an AI App from experimental to production. This includes compliance checks, validation processes, and approval workflows. The integration with automation tools streamlines the deployment process, ensuring efficient and accurate app management.
 
-## Project Structure
+### Flexible Build Environment
 
-```
-ClaudeCodeSandbox/
-├── src/
-│   ├── python/       # Python components
-│   ├── java/         # Java components
-│   └── mcp/          # MCP components
-├── docs/             # Documentation
-├── assets/           # Static assets
-├── config/           # Configuration files
-└── tests/            # Test suites
-```
+The platform's build environment offers a range of models, configurations, and predefined building blocks to facilitate app development. Users can select from various language models, configure settings, and utilize tools like email sending and database querying. The real-time testing capability allows for immediate feedback and iterative improvements, while the notebook tab supports advanced coding and customization.
+
+### Robust Deployment and CI/CD
+
+The deployment phase leverages a robust CI/CD pipeline to maintain code integrity and streamline the transition from development to production. Version control, microservice deployment, and standalone production deployment options ensure that all AI Apps are deployed efficiently and securely. The platform's scalability and flexibility are enhanced by leveraging options from platforms like AWS.
+
+### In-Depth Analysis and Monitoring
+
+The "Utility Analysis and Monitoring" feature provides comprehensive insights into user interactions, costs, and usage patterns. This allows users to evaluate the performance and impact of their AI Apps, identify high-cost areas, and optimize resource allocation. Detailed workflow traces, annotations, and event history support continuous improvement and strategic planning.
+
+### Workspaces Integration
+
+The integration of Workspaces within the AI App Store allows individuals or specific job families to create and manage collaborative environments. These Workspaces support memory functionality to retain context and history, enable app integration from the App Store, and provide both local and remote access capabilities. Users can direct the Workspace through various utilities and tools, with action logging and checkpoints to ensure reproducibility.
 
 ## Documentation
 
 - [Architecture Overview](./docs/architecture.md)
 - [API Specification](./docs/api-spec.md)
 - [Features and Benefits](./docs/features.md)
+- [Detailed Features](./docs/features-detailed.md)
+- [Workspaces](./docs/workspaces.md)
+
+## Project Structure
+
+```
+ClaudeCodeSandbox/
+├── src/
+│   ├── python/           # Python components
+│   │   ├── app_management/  # App governance and deployment
+│   │   ├── build_environment/ # Flexible build environment
+│   │   ├── deployment/    # CI/CD pipeline components
+│   │   ├── analysis/      # Analysis and monitoring
+│   │   ├── workspaces/    # Workspace functionality
+│   │   └── workflows/     # Workflow engine
+│   ├── java/           # Java components
+│   └── mcp/            # MCP components
+├── docs/               # Documentation
+├── assets/             # Static assets
+├── config/             # Configuration files
+└── tests/              # Test suites
+```
 
 ## Getting Started
 
