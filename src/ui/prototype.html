@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI App Store - Workspace</title>
+    <style>
+        :root {
+            --primary: #4a6bdf;
+            --secondary: #6c757d;
+            --success: #28a745;
+            --background: #f8f9fa;
+            --sidebar: #343a40;
+            --text: #212529;
+            --border: #dee2e6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            grid-template-rows: 60px 1fr;
+            grid-template-areas: 
+                "header header"
+                "sidebar main";
+            height: 100vh;
+            background-color: var(--background);
+            color: var(--text);
+        }
+        
+        header {
+            grid-area: header;
+            background-color: white;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .logo {
+            font-weight: bold;
+            font-size: 20px;
+            color: var(--primary);
+        }
+        
+        .search {
+            margin-left: 30px;
+            flex-grow: 1;
+        }
+        
+        .search input {
+            width: 400px;
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            background-color: var(--background);
+            outline: none;
+        }
+        
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        aside {
+            grid-area: sidebar;
+            background-color: var(--sidebar);
+            padding: 20px 0;
+            color: white;
+        }
+        
+        .sidebar-menu {
+            list-style: none;
+        }
+        
+        .sidebar-menu li {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        
+        .sidebar-menu li:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        .sidebar-menu li.active {
+            background-color: rgba(255,255,255,0.2);
+            border-left: 3px solid var(--primary);
+        }
+        
+        .sidebar-section {
+            margin-top: 20px;
+            padding: 0 20px;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.6);
+        }
+        
+        main {
+            grid-area: main;
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            grid-template-areas: "workspace tools";
+            overflow: hidden;
+        }
+        
+        .workspace {
+            grid-area: workspace;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .tools-panel {
+            grid-area: tools;
+            background-color: white;
+            border-left: 1px solid var(--border);
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .app-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .app-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .app-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        button {
+            padding: 6px 12px;
+            border-radius: 4px;
+            border: none;
+            background-color: var(--primary);
+            color: white;
+            cursor: pointer;
+        }
+        
+        button.secondary {
+            background-color: var(--secondary);
+        }
+        
+        .app-metadata {
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+        
+        .app-description {
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        
+        .app-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .tag {
+            background-color: var(--background);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        
+        .chat-interface {
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .chat-messages {
+            flex-grow: 1;
+            overflow-y: auto;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .message {
+            margin-bottom: 15px;
+        }
+        
+        .message.user {
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .message-bubble {
+            max-width: 70%;
+            padding: 10px 15px;
+            border-radius: 8px;
+        }
+        
+        .message.assistant .message-bubble {
+            background-color: #f1f3f5;
+        }
+        
+        .message.user .message-bubble {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .chat-input {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .chat-input input {
+            flex-grow: 1;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            outline: none;
+        }
+        
+        .tools-section {
+            margin-bottom: 30px;
+        }
+        
+        .tools-section h3 {
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .tool-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            cursor: pointer;
+        }
+        
+        .tool-item:hover {
+            color: var(--primary);
+        }
+        
+        .code-editor {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            height: 300px;
+            overflow-y: auto;
+        }
+        
+        .line-number {
+            color: #888;
+            margin-right: 15px;
+            user-select: none;
+        }
+        
+        .code-line {
+            line-height: 1.5;
+        }
+        
+        .keyword {
+            color: #569cd6;
+        }
+        
+        .string {
+            color: #ce9178;
+        }
+        
+        .comment {
+            color: #6a9955;
+        }
+        
+        .function {
+            color: #dcdcaa;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">AI App Store</div>
+        <div class="search">
+            <input type="text" placeholder="Search apps, workspaces, or tools...">
+        </div>
+        <div class="user-menu">
+            <div>Notifications</div>
+            <div>Settings</div>
+            <div class="avatar">U</div>
+        </div>
+    </header>
+    
+    <aside>
+        <ul class="sidebar-menu">
+            <li class="active">Dashboard</li>
+            <li>My Apps</li>
+            <li>Marketplace</li>
+            <li>Analytics</li>
+        </ul>
+        
+        <div class="sidebar-section">Workspaces</div>
+        <ul class="sidebar-menu">
+            <li>Project Alpha</li>
+            <li>Customer Support</li>
+            <li>Data Analysis</li>
+            <li>+ New Workspace</li>
+        </ul>
+        
+        <div class="sidebar-section">Development</div>
+        <ul class="sidebar-menu">
+            <li>My Builds</li>
+            <li>Deployments</li>
+            <li>CI/CD Pipelines</li>
+            <li>Governance</li>
+        </ul>
+    </aside>
+    
+    <main>
+        <div class="workspace">
+            <h2>Project Alpha Workspace</h2>
+            <p>Collaborative space for AI application development and deployment</p>
+            
+            <div class="app-card">
+                <div class="app-header">
+                    <div class="app-title">Sentiment Analysis Service</div>
+                    <div class="app-actions">
+                        <button>Deploy</button>
+                        <button class="secondary">Configure</button>
+                    </div>
+                </div>
+                <div class="app-metadata">
+                    <div>Version: 1.2.3</div>
+                    <div>Updated: 2 days ago</div>
+                    <div>Status: Development</div>
+                </div>
+                <div class="app-description">
+                    This application analyzes text input for sentiment and emotion classification with high accuracy.
+                    Supports multiple languages and domain-specific fine-tuning.
+                </div>
+                <div class="app-tags">
+                    <div class="tag">NLP</div>
+                    <div class="tag">Text Analysis</div>
+                    <div class="tag">Classification</div>
+                    <div class="tag">API-enabled</div>
+                </div>
+            </div>
+            
+            <div class="app-card">
+                <h3>Chat Interface</h3>
+                <div class="chat-interface">
+                    <div class="chat-messages">
+                        <div class="message assistant">
+                            <div class="message-bubble">
+                                How can I help with your sentiment analysis app today?
+                            </div>
+                        </div>
+                        <div class="message user">
+                            <div class="message-bubble">
+                                I need to improve accuracy for financial text analysis
+                            </div>
+                        </div>
+                        <div class="message assistant">
+                            <div class="message-bubble">
+                                I recommend fine-tuning the model with a domain-specific dataset. Would you like me to help you prepare a training pipeline for financial text?
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" placeholder="Type your message...">
+                        <button>Send</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="app-card">
+                <h3>Code Editor</h3>
+                <div class="code-editor">
+                    <div class="code-line">
+                        <span class="line-number">1</span>
+                        <span class="keyword">from</span> transformers <span class="keyword">import</span> BertTokenizer, BertForSequenceClassification
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">2</span>
+                        <span class="keyword">import</span> torch
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">3</span>
+                        <span class="comment"># Load pre-trained model for sentiment analysis</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">4</span>
+                        <span class="keyword">class</span> <span class="function">SentimentAnalyzer</span>:
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">5</span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">def</span> <span class="function">__init__</span>(self, model_name=<span class="string">"financial-bert-base"</span>):
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">6</span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.tokenizer = BertTokenizer.from_pretrained(model_name)
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">7</span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.model = BertForSequenceClassification.from_pretrained(model_name)
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">8</span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.model.eval()
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">9</span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">10</span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">def</span> <span class="function">analyze</span>(self, text):
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">11</span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inputs = self.tokenizer(text, return_tensors=<span class="string">"pt"</span>)
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">12</span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;outputs = self.model(**inputs)
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tools-panel">
+            <div class="tools-section">
+                <h3>Collaboration Tools</h3>
+                <div class="tool-item">Tasks (3 pending)</div>
+                <div class="tool-item">Comments (5 new)</div>
+                <div class="tool-item">Schedule Meeting</div>
+                <div class="tool-item">Create Poll</div>
+            </div>
+            
+            <div class="tools-section">
+                <h3>Developer Tools</h3>
+                <div class="tool-item">Git Repository</div>
+                <div class="tool-item">API Documentation</div>
+                <div class="tool-item">Testing Suite</div>
+                <div class="tool-item">Deployment Pipeline</div>
+            </div>
+            
+            <div class="tools-section">
+                <h3>Model Configuration</h3>
+                <div class="tool-item">Select Base Model</div>
+                <div class="tool-item">Fine-tuning Parameters</div>
+                <div class="tool-item">Performance Metrics</div>
+                <div class="tool-item">Resource Allocation</div>
+            </div>
+            
+            <div class="tools-section">
+                <h3>Analytics</h3>
+                <div class="tool-item">Usage Statistics</div>
+                <div class="tool-item">Error Reports</div>
+                <div class="tool-item">User Feedback</div>
+                <div class="tool-item">Performance Dashboard</div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
