@@ -1,8 +1,8 @@
-# Home Lending Practitioner AI App Store
+ Practitioner AI App Store
 
 ## Introduction
 
-The Home Lending Practitioner AI App Store is an innovative platform designed to empower users within the Home Lending business to create, manage, and optimize AI-driven applications. This platform provides a structured and controlled environment for building automation workflows and integrations, ensuring alignment with organizational controls and compliance standards. By leveraging advanced AI technologies, the AI App Store enhances productivity, efficiency, and strategic decision-making.
+ Practitioner AI App Store is an innovative platform designed to empower users within the  business to create, manage, and optimize AI-driven applications. This platform provides a structured and controlled environment for building automation workflows and integrations, ensuring alignment with organizational controls and compliance standards. By leveraging advanced AI technologies, the AI App Store enhances productivity, efficiency, and strategic decision-making.
 
 ## Key Features and Benefits
 
