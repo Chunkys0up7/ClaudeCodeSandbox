@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Main class for the Home Lending Practitioner AI App Store
+ * Main class for  Practitioner AI App Store
  */
 public class AppStore {
     private List<Application> applications;
