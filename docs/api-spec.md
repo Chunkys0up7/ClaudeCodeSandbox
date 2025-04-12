@@ -2,7 +2,7 @@
 
 ## API Overview
 
-This document outlines the REST API endpoints for the Home Lending Practitioner AI App Store.
+This document outlines the REST API endpoints for  Practitioner AI App Store.
 
 ## Base URL
 
